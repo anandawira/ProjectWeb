@@ -14,7 +14,7 @@
       src="https://kit.fontawesome.com/5fd5318cab.js"
       crossorigin="anonymous"
     ></script>
-    
+
   </head>
   <body>
     <header>
@@ -71,7 +71,17 @@
         </ul>
       </nav>
     </header>
-    <main></main>
-    <footer></footer>
+    <main>
+      <?php
+        include 'pages/master_data/department.php';
+      ?>
+    </main>
+    <div class="spacer" style="padding: 28px">
+    </div>
+    <footer class="fixed-bottom py-3 bg-dark text-white-50">
+      <div class="container text-center">
+          <small>Copyright &copy; Ananda Wiradharma</small>
+      </div>
+    </footer>
   </body>
 </html>

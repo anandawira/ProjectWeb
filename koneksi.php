@@ -1,5 +1,4 @@
-<?php 
-//$koneksi = mysqli_connect("localhost","id13127704_root","%v6UE!-IX?UrpK|6","id13127704_absensikaryawan");
+<?php
 $koneksi = mysqli_connect("localhost","root","","absensikaryawan");
 
 // Check connection

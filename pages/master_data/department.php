@@ -13,9 +13,8 @@
       crossorigin="anonymous"
     ></script>
 </head>
-<body>
+<body onload="viewData()">
     <?php
-        $root =  $_SERVER['DOCUMENT_ROOT'];
     ?>
     <h2 class="text-center mt-5 mb-0">DEPARTMENT MASTER DATA</h2>
     <div class="container-sm p-0 mb-5">
@@ -30,24 +29,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        include $root.'/koneksi.php';    
-                        $no = 1;
-                        $data = mysqli_query($koneksi,"CALL get_departments");
-                        while($d = mysqli_fetch_array($data)){
-                    ?>
-                        <tr>
-                            <th class="align-middle" scope="row"><?php echo $no++; ?></th>
-                            <td class="align-middle"><?php echo $d['name']; ?></td>
-                            <td class="py-1 align-middle">
-                                <button type="button" class="btn btn-secondary btn-sm mx-1"><i class="fas fa-edit"></i>  Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
-                            </td>
-                        </tr>
-
-                    <?php 
-                        }
-                    ?>
                 </tbody>
             </table>
         </div>
@@ -62,10 +43,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" id="insert_form">
-                    <label for="departmentName">Department Name</label>
-                    <input type="text" required name="departmentName" id="departmentName" class="form-control">
-                    <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success mt-2 btn-sm">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Department Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success btn-sm" onClick="insertData()" data-dismiss="modal">
                 </form>
             </div>
             <div class="modal-footer">
@@ -75,16 +58,40 @@
         </div>
     </div>
     <script>
-    $(document).ready(function() {
-        $('#insert_form').on('submit', function(event) {
-            event.preventDefault();
+    function insertData() {
+        let name = $('#name').val();
+        if (name!="") {
             $.ajax({
-                url: '/pages/master_data/crud_department/insert_department.php',
-                method: "POST",
-                data: $('#insert_form').serialize()
+                type: "POST",
+                url: '/pages/master_data/crud/department_script.php?p=add',
+                data: "name="+name,
+                success: function(msg) {
+                    viewData();
+                }
             })
+        }
+    }
+
+    function viewData() {
+        $.ajax({
+            type: "GET",
+            url: '/pages/master_data/crud/department_script.php?p=view',
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
+    }
+    function deleteData(str) {
+        let id=str;
+        $.ajax({
+            type: "POST",
+            url: '/pages/master_data/crud/department_script.php?p=delete',
+            data: "id="+id,
+            success: function (data) {
+                viewData();
+            }
         })
-    })
+    }
     </script>
 </body>
 </html>

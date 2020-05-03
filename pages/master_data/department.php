@@ -15,7 +15,7 @@
 </head>
 <body>
     <?php
-        $root = dirname(dirname(dirname(__FILE__)));
+        $root =  $_SERVER['DOCUMENT_ROOT'];
     ?>
     <h2 class="text-center mt-5 mb-0">DEPARTMENT MASTER DATA</h2>
     <div class="container-sm p-0 mb-5">
@@ -79,7 +79,7 @@
         $('#insert_form').on('submit', function(event) {
             event.preventDefault();
             $.ajax({
-                url: 'crud_department/insert_department.php',
+                url: '/pages/master_data/crud_department/insert_department.php',
                 method: "POST",
                 data: $('#insert_form').serialize()
             })

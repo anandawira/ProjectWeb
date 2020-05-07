@@ -14,8 +14,6 @@
     ></script>
 </head>
 <body onload="viewData()">
-    <?php
-    ?>
     <h2 class="text-center mt-5 mb-0">DEPARTMENT MASTER DATA</h2>
     <div class="container-sm p-0 mb-5">
     <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm mb-2 float-right"><i class="fas fa-plus"></i>  Add</button>

@@ -148,29 +148,33 @@
         });
     }
     function deleteData(str) {
-        // let id=str;
-        // $.ajax({
-        //     type: "POST",
-        //     url: '/pages/master_data/crud/shift_script.php?p=delete',
-        //     data: "id="+id,
-        //     success: function () {
-        //         viewData();
-        //     }
-        // })
+        let id=str;
+        $.ajax({
+            type: "POST",
+            url: '/pages/master_data/crud/shift_script.php?p=delete',
+            data: "id="+id,
+            success: function () {
+                viewData();
+            }
+        })
     }
     function updateData(str) {
-        // $('.modal-backdrop').remove();
-        // let id = str;
-        // let name = $('#name-'+id).val();
-        // console.log(name);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/pages/master_data/crud/shift_script.php?p=edit",
-        //     data: "name="+name+"&id="+id,
-        //     success: function() {
-        //         viewData();
-        //     }
-        // })
+        $('.modal-backdrop').remove();
+        let id = str;
+        let inHour = $('#inHour-'+id).val();
+        let outHour = $('#outHour-'+id).val();
+        let inMinute = $('#inMinute-'+id).val();
+        let outMinute = $('#outMinute-'+id).val();
+        let inTime = inHour+":"+inMinute;
+        let outTime = outHour+":"+outMinute;
+        $.ajax({
+            type: "POST",
+            url: "/pages/master_data/crud/shift_script.php?p=edit",
+            data: "inTime="+inTime+"&outTime="+outTime+"&id="+id,
+            success: function(data) {
+                viewData();
+            }
+        })
     }
     </script>
 </body>

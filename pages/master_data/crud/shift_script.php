@@ -10,27 +10,121 @@
         ?>
         <tr>
             <th class="align-middle" scope="row"><?php echo $no++; ?></th>
-            <td class="align-middle"><?php echo $d['in_time']; ?></td>
-            <td class="align-middle"><?php echo $d['out_time']; ?></td>
+            <td class="align-middle"><?php echo $d['in_time']; ?> WIB</td>
+            <td class="align-middle"><?php echo $d['out_time']; ?> WIB</td>
             <td class="py-1 align-middle">
                 <button type="button" class="btn btn-secondary btn-sm mx-1" data-toggle="modal" data-target="#editModal-<?php echo $d['id']; ?>"><i class="fas fa-edit"></i>  Edit</button>
                 <div class="modal fade text-left" id="editModal-<?php echo $d['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel-<?php echo $d['id']; ?>">Edit Department</h5>
+                            <h5 class="modal-title" id="addModalLabel-<?php echo $d['id']; ?>">Edit Shift</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="form-group">
-                                    <input type="hidden" id="<?php echo $d['id']; ?>" value="<?php echo $d['id']; ?>">
-                                    <label for="name-<?php echo $d['id']; ?>">Department Name</label>
-                                    <input type="text" class="form-control" id="name-<?php echo $d['id']; ?>" value="<?php echo $d['name']; ?>" required>
+                                <input type="hidden" id="<?php echo $d['id']; ?>" value="<?php echo $d['id']; ?>">
+                                <h6 class="font-weight-bold">IN TIME</h6>
+                                <div class="row">
+                                    <div class="col form-group col-sm-3">
+                                        <label for="inHour-<?php echo $d['id']; ?>">Hour</label>
+                                        <select class="form-control" style="text-align-last: center;" id="inHour-<?php echo $d['id']; ?>">
+                                            <?php
+                                            $selected = date("G", strtotime($d['in_time']));
+                                            for ($x = 1; $x <= 24; $x++) {
+                                                if ($selected==$x) {
+                                                    if($x>9){
+                                                        echo "<option selected>$x</option>";
+                                                    }else{
+                                                        echo "<option selected>0$x</option>";
+                                                    }
+                                                }else{
+                                                    if($x>9){
+                                                        echo "<option>$x</option>";
+                                                    }else{
+                                                        echo "<option>0$x</option>";
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col form-group col-sm-3">
+                                        <label for="inMinute-<?php echo $d['id']; ?>">Minute</label>
+                                        <select class="form-control" style="text-align-last: center;" id="inMinute-<?php echo $d['id']; ?>">
+                                            <?php
+                                            $selected = date("i", strtotime($d['in_time']));
+                                            for ($x = 0; $x <= 55; $x+=5) {
+                                                if ($selected==$x) {
+                                                    if($x>9){
+                                                        echo "<option selected>$x</option>";
+                                                    }else{
+                                                        echo "<option selected>0$x</option>";
+                                                    }
+                                                }else{
+                                                    if($x>9){
+                                                        echo "<option>$x</option>";
+                                                    }else{
+                                                        echo "<option>0$x</option>";
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
-                                <input type="submit" name="edit" id="edit" value="Update" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['id']; ?>)" data-dismiss="modal">
+                                <h6 class="font-weight-bold">OUT TIME</h6>
+                                <div class="row">
+                                    <div class="col form-group col-sm-3">
+                                        <label for="outHour-<?php echo $d['id']; ?>">Hour</label>
+                                        <select class="form-control" style="text-align-last: center;" id="outHour-<?php echo $d['id']; ?>">
+                                        <?php
+                                            $selected = date("G", strtotime($d['out_time']));
+                                            for ($x = 1; $x <= 24; $x++) {
+                                                if ($selected==$x) {
+                                                    if($x>9){
+                                                        echo "<option selected>$x</option>";
+                                                    }else{
+                                                        echo "<option selected>0$x</option>";
+                                                    }
+                                                }else{
+                                                    if($x>9){
+                                                        echo "<option>$x</option>";
+                                                    }else{
+                                                        echo "<option>0$x</option>";
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col form-group col-sm-3">
+                                        <label for="outMinute-<?php echo $d['id']; ?>">Minute</label>
+                                        <select class="form-control" style="text-align-last: center;" id="outMinute-<?php echo $d['id']; ?>">
+                                        <?php
+                                            $selected = date("i", strtotime($d['out_time']));
+                                            for ($x = 0; $x <= 55; $x+=5) {
+                                                if ($selected==$x) {
+                                                    if($x>9){
+                                                        echo "<option selected>$x</option>";
+                                                    }else{
+                                                        echo "<option selected>0$x</option>";
+                                                    }
+                                                }else{
+                                                    if($x>9){
+                                                        echo "<option>$x</option>";
+                                                    }else{
+                                                        echo "<option>0$x</option>";
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['id']; ?>)" data-dismiss="modal">
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -51,11 +145,12 @@
         mysqli_query($koneksi,"CALL add_shift('$inTime','$outTime')");
     }elseif ($page=='delete'){
         $id = $_POST['id'];
-        $data = mysqli_query($koneksi,"CALL delete_department($id)");
+        $data = mysqli_query($koneksi,"CALL delete_shift($id)");
     }elseif ($page=='edit'){
         $id = $_POST['id'];
-        $name = $_POST['name'];
-        mysqli_query($koneksi,"CALL edit_department('$id', '$name')");
+        $inTime = $_POST['inTime'];
+        $outTime = $_POST['outTime'];
+        mysqli_query($koneksi,"CALL edit_shift('$id', '$inTime','$outTime')");
     }
 
 ?>

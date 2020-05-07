@@ -124,7 +124,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['id']; ?>)" data-dismiss="modal">
+                                <input type="submit" name="edit" id="edit" value="Update" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['id']; ?>)" data-dismiss="modal">
                             </form>
                         </div>
                         <div class="modal-footer">

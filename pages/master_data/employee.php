@@ -89,7 +89,7 @@
                             echo "SQLSTATE error: " . mysqli_error($koneksi);
                             while($shifts = $data2->fetch_assoc()){
                         ?>
-                            <option value="<?php echo $shifts['id']; ?>"><?php echo $shifts['in_time']; ?> WIB - <?php echo $shifts['in_time']; ?> WIB</option>
+                            <option value="<?php echo $shifts['id']; ?>"><?php echo $shifts['in_time']; ?> WIB - <?php echo $shifts['out_time']; ?> WIB</option>
                         <?php
                             }
                         ?>
@@ -119,19 +119,18 @@
                 data: "name="+name+"&dept="+department+"&pos="+position+"&shift="+shift,
                 success: function(msg) {
                     viewData();
-                    alert("hahaha");
                 }
             })
         }
     }
     function viewData() {
-        // $.ajax({
-        //     type: "GET",
-        //     url: '/pages/master_data/crud/employee_script.php?p=view',
-        //     success: function(data) {
-        //         $('tbody').html(data);
-        //     }
-        // });
+        $.ajax({
+            type: "GET",
+            url: '/pages/master_data/crud/employee_script.php?p=view',
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
     }
     function deleteData(str) {
         // let id=str;

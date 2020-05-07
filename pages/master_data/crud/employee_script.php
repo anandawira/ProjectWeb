@@ -5,12 +5,16 @@
 
     if ($page=='view') {
         $no = 1;
-        $data = mysqli_query($koneksi,"CALL get_locations");
+        $data = mysqli_query($koneksi,"CALL get_employees");
         while($d = mysqli_fetch_array($data)){
         ?>
         <tr>
             <th class="align-middle" scope="row"><?php echo $no++; ?></th>
-            <td class="align-middle"><?php echo $d['name']; ?></td>
+            <td class="align-middle"><?php echo $d['no']; ?></td>
+            <td class="align-middle"><?php echo $d['full_name']; ?></td>
+            <td class="align-middle"><?php echo $d['department']; ?></td>
+            <td class="align-middle"><?php echo $d['position']; ?></td>
+            <td class="align-middle"><?php echo $d['in_time']; ?> WIB - <?php echo $d['out_time']; ?> WIB</td>
             <td class="py-1 align-middle">
                 <button type="button" class="btn btn-secondary btn-sm mx-1" data-toggle="modal" data-target="#editModal-<?php echo $d['id']; ?>"><i class="fas fa-edit"></i>  Edit</button>
                 <div class="modal fade text-left" id="editModal-<?php echo $d['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">

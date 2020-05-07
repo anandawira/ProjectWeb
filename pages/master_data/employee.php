@@ -15,6 +15,8 @@
 </head>
 <body onload="viewData()">
     <?php
+        $root =  $_SERVER['DOCUMENT_ROOT'];
+        include $root.'/koneksi.php';
     ?>
     <h2 class="text-center mt-5 mb-0">EMPLOYEE MASTER DATA</h2>
     <div class="container-sm p-0 mb-5">
@@ -56,31 +58,41 @@
                     <div class="form-group">
                         <label for="department">Department</label>
                         <select class="form-control" id="department">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <?php
+                            $data1 = mysqli_query($koneksi,"CALL get_departments");
+                            while($departments = mysqli_fetch_assoc($data1)){
+                        ?>
+                            <option value="<?php echo $departments['id']; ?>"><?php echo $departments['name']; ?></option>
+                        <?php
+                            }
+                            $koneksi->next_result();
+                        ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="position">Position</label>
                         <select class="form-control" id="position">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>Operator</option>
+                        <option>Engineer</option>
+                        <option>Staff</option>
+                        <option>Supervisor</option>
+                        <option>Manager</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="shift">Shift</label>
                         <select class="form-control" id="shift">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <?php
+                            $data2 = $koneksi->query("CALL get_shifts");
+                            echo "SQLSTATE error: " . mysqli_sqlstate($koneksi);
+                            echo "<br>";
+                            echo "SQLSTATE error: " . mysqli_error($koneksi);
+                            while($shifts = $data2->fetch_assoc()){
+                        ?>
+                            <option value="<?php echo $shifts['id']; ?>"><?php echo $shifts['in_time']; ?> WIB - <?php echo $shifts['in_time']; ?> WIB</option>
+                        <?php
+                            }
+                        ?>
                         </select>
                     </div>
                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success btn-sm" onClick="insertData()" data-dismiss="modal">
@@ -95,23 +107,27 @@
     <!-- modal -->
     <script>
     function insertData() {
-        // let name = $('#name').val();
-        // if (name!="") {
-        //     $.ajax({
-        //         type: "POST",
-        //         url: '/pages/master_data/crud/location_script.php?p=add',
-        //         data: "name="+name,
-        //         success: function(msg) {
-        //             viewData();
-        //         }
-        //     })
-        // }
+        let name = $('#name').val();
+        let department = $('#department').val();
+        let position = $('#position').val();
+        let shift = $('#shift').val();
+        console.log(name+department+position+shift);
+        if (name!="") {
+            $.ajax({
+                type: "POST",
+                url: '/pages/master_data/crud/employee_script.php?p=add',
+                data: "name="+name+"&dept="+department+"&pos="+position+"&shift="+shift,
+                success: function(msg) {
+                    viewData();
+                    alert("hahaha");
+                }
+            })
+        }
     }
-
     function viewData() {
         // $.ajax({
         //     type: "GET",
-        //     url: '/pages/master_data/crud/location_script.php?p=view',
+        //     url: '/pages/master_data/crud/employee_script.php?p=view',
         //     success: function(data) {
         //         $('tbody').html(data);
         //     }
@@ -121,7 +137,7 @@
         // let id=str;
         // $.ajax({
         //     type: "POST",
-        //     url: '/pages/master_data/crud/location_script.php?p=delete',
+        //     url: '/pages/master_data/crud/employee_script.php?p=delete',
         //     data: "id="+id,
         //     success: function () {
         //         viewData();
@@ -135,7 +151,7 @@
         // console.log(name);
         // $.ajax({
         //     type: "POST",
-        //     url: "/pages/master_data/crud/location_script.php?p=edit",
+        //     url: "/pages/master_data/crud/employee_script.php?p=edit",
         //     data: "name="+name+"&id="+id,
         //     success: function() {
         //         viewData();

@@ -46,7 +46,10 @@
         }
     }elseif ($page=='add') {
         $name = $_POST['name'];
-        mysqli_query($koneksi,"CALL add_location('$name')");
+        $dept = $_POST['dept'];
+        $pos = $_POST['pos'];
+        $shift = $_POST['shift'];
+        mysqli_query($koneksi,"CALL add_employee('$name', '$dept', '$pos', '$shift')");
     }elseif ($page=='delete'){
         $id = $_POST['id'];
         $data = mysqli_query($koneksi,"CALL delete_location($id)");

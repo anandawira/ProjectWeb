@@ -56,6 +56,20 @@
                                 <div class="form-group">
                                     <label for="position">Position</label>
                                     <select class="form-control" id="position-<?php echo $d['no']; ?>">
+                                    <?php
+                                        $positions = ['Operator', 'Engineer', 'Staff', 'Supervisor', 'Manager'];
+                                        foreach($positions as $position){
+                                            if ($position==$d['position']) {
+                                    ?>
+                                        <option selected><?php echo $position; ?></option>
+                                    <?php
+                                            }else{
+                                    ?>
+                                        <option><?php echo $position; ?></option>
+                                    <?php
+                                            }
+                                          }
+                                    ?>
                                     <option>Operator</option>
                                     <option>Engineer</option>
                                     <option>Staff</option>

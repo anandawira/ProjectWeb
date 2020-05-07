@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <button onClick="deleteData(<?php echo $d['id']; ?>)" type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
+                <button onClick="deleteData(<?php echo $d['no']; ?>)" type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
             </td>
         </tr>
 
@@ -109,7 +109,7 @@
         mysqli_query($koneksi,"CALL add_employee('$name', '$dept', '$pos', '$shift')");
     }elseif ($page=='delete'){
         $id = $_POST['id'];
-        $data = mysqli_query($koneksi,"CALL delete_location($id)");
+        $data = mysqli_query($koneksi,"CALL delete_employee($id)");
     }elseif ($page=='edit'){
         $id = $_POST['id'];
         $name = $_POST['name'];

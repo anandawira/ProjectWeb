@@ -133,15 +133,15 @@
         });
     }
     function deleteData(str) {
-        // let id=str;
-        // $.ajax({
-        //     type: "POST",
-        //     url: '/pages/master_data/crud/employee_script.php?p=delete',
-        //     data: "id="+id,
-        //     success: function () {
-        //         viewData();
-        //     }
-        // })
+        let id=str;
+        $.ajax({
+            type: "POST",
+            url: '/pages/master_data/crud/employee_script.php?p=delete',
+            data: "id="+id,
+            success: function () {
+                viewData();
+            }
+        })
     }
     function updateData(str) {
         $('.modal-backdrop').remove();

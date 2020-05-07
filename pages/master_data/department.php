@@ -33,6 +33,7 @@
             </table>
         </div>
     </div>
+    <!-- modal -->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -57,6 +58,7 @@
             </div>
         </div>
     </div>
+    <!-- modal -->
     <script>
     function insertData() {
         let name = $('#name').val();
@@ -87,7 +89,21 @@
             type: "POST",
             url: '/pages/master_data/crud/department_script.php?p=delete',
             data: "id="+id,
-            success: function (data) {
+            success: function () {
+                viewData();
+            }
+        })
+    }
+    function updateData(str) {
+        $('.modal-backdrop').remove();
+        let id = str;
+        let name = $('#name-'+id).val();
+        console.log(name);
+        $.ajax({
+            type: "POST",
+            url: "/pages/master_data/crud/department_script.php?p=edit",
+            data: "name="+name+"&id="+id,
+            success: function() {
                 viewData();
             }
         })

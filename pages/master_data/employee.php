@@ -144,18 +144,21 @@
         // })
     }
     function updateData(str) {
-        // $('.modal-backdrop').remove();
-        // let id = str;
-        // let name = $('#name-'+id).val();
-        // console.log(name);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/pages/master_data/crud/employee_script.php?p=edit",
-        //     data: "name="+name+"&id="+id,
-        //     success: function() {
-        //         viewData();
-        //     }
-        // })
+        $('.modal-backdrop').remove();
+        let id = str;
+        let name = $('#name-'+id).val();
+        let department = $('#department-'+id).val();
+        let position = $('#position-'+id).val();
+        let shift = $('#shift-'+id).val();
+        console.log(name);
+        $.ajax({
+            type: "POST",
+            url: "/pages/master_data/crud/employee_script.php?p=edit",
+            data: "name="+name+"&dept="+department+"&pos="+position+"&shift="+shift+"&id="+id,
+            success: function() {
+                viewData();
+            }
+        })
     }
     </script>
 </body>

@@ -28,6 +28,7 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle my-auto"
+              href="#"
               id="navbarDropdown1"
               role="button"
               data-toggle="dropdown"
@@ -48,6 +49,7 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle my-auto"
+              href="#"
               id="navbarDropdown2"
               role="button"
               data-toggle="dropdown"

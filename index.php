@@ -27,8 +27,7 @@
         <ul class="nav collapse-nav mr-auto">
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
+              class="nav-link dropdown-toggle my-auto"
               id="navbarDropdown1"
               role="button"
               data-toggle="dropdown"
@@ -48,8 +47,7 @@
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle"
-              href="#"
+              class="nav-link dropdown-toggle my-auto"
               id="navbarDropdown2"
               role="button"
               data-toggle="dropdown"
@@ -66,12 +64,13 @@
               <a class="dropdown-item" href="#">Laporan Karyawan Bermasalah</a>
             </div>
           </li>
+          <!-- Kalo gak work, hapus import bootstrap dari dynamic page nya -->
         </ul>
       </nav>
     </header>
     <main>
       <?php
-        include 'pages/master_data/department.php';
+        // include 'pages/master_data/department.php';
       ?>
     </main>
     <div class="spacer" style="padding: 28px">

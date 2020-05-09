@@ -72,10 +72,10 @@
     </header>
     <main>
       <?php
-        // include 'pages/master_data/department.php';
+        include 'pages/attendance/attendance.php';
       ?>
     </main>
-    <div class="spacer" style="padding: 28px">
+    <div class="spacer" style="padding: 10px">
     </div>
     <footer class="fixed-bottom py-3 bg-dark text-white-50">
       <div class="container text-center">

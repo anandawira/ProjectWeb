@@ -84,9 +84,6 @@
                         <select class="form-control" id="shift">
                         <?php
                             $data2 = $koneksi->query("CALL get_shifts");
-                            echo "SQLSTATE error: " . mysqli_sqlstate($koneksi);
-                            echo "<br>";
-                            echo "SQLSTATE error: " . mysqli_error($koneksi);
                             while($shifts = $data2->fetch_assoc()){
                         ?>
                             <option value="<?php echo $shifts['id']; ?>"><?php echo $shifts['in_time']; ?> WIB - <?php echo $shifts['out_time']; ?> WIB</option>

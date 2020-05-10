@@ -70,11 +70,6 @@
                                             }
                                           }
                                     ?>
-                                    <option>Operator</option>
-                                    <option>Engineer</option>
-                                    <option>Staff</option>
-                                    <option>Supervisor</option>
-                                    <option>Manager</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

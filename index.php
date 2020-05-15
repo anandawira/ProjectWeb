@@ -39,11 +39,10 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
               <a class="dropdown-item" href="/?page=employee">Master Data Karyawan</a>
-              <a class="dropdown-item" href="#">Master Data Shift Karyawan</a>
-              <a class="dropdown-item" href="#">Master Data Lokasi Absensi</a>
-              <a class="dropdown-item" href="#"
-                >Master Data Departemen Karyawan</a
-              >
+              <a class="dropdown-item" href="/?page=shift">Master Data Shift Karyawan</a>
+              <a class="dropdown-item" href="/?page=location">Master Data Lokasi Absensi</a>
+              <a class="dropdown-item" href="/?page=department">Master Data Departemen Karyawan</a>
+              <a class="dropdown-item" href="/?page=login_data">Master Data Login</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -81,6 +80,8 @@
           include 'pages/master_data/location.php';
         }elseif ($page=="shift") {
           include 'pages/master_data/shift.php';
+        }elseif($page=="login_data"){
+          include 'pages/master_data/login_data.php';
         }else{
           include 'pages/attendance/attendance.php';
         }

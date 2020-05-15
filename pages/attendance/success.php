@@ -14,9 +14,10 @@
     ></script>
 </head>
 <body>
-    <div class="container mt-4">
-        <h1 class="text-center display-1"><i class="fas fa-check-circle text-success"></i></h1>
+    <div class="container mt-4 text-center">
+        <h1 class="display-1"><i class="fas fa-check-circle text-success"></i></h1>
+        <h2 class="font-weight-normal">Your attendance has been recorded.</h2>
+        <button type="button" class="btn btn-danger mt-4">Log Out</button>
     </div>
-    <h2 class="font-weight-normal text-center">Your attendance has been recorded.</h2>
 </body>
 </html>

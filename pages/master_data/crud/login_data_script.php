@@ -16,23 +16,27 @@
             <td class="align-middle"><?php echo $d['type']; ?></td>
             <td class="py-1 align-middle">
                 <button type="button" class="btn btn-secondary btn-sm mx-1" data-toggle="modal" data-target="#editModal-<?php echo $d['employee_no']; ?>"><i class="fas fa-edit"></i>  Edit</button>
-                <div class="modal fade text-left" id="editModal-<?php echo $d['employee_no']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal fade text-left" id="editModal-<?php echo $d['employee_no']; ?>" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel-<?php echo $d['id']; ?>">Edit Location</h5>
+                            <h5 class="modal-title" id="editModalLabel-<?php echo $d['employee_no']; ?>">Edit Login Data - <?php echo $d['employee_no']; ?> <?php echo $d['full_name']; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <form>
+                            <input type="hidden" id="empNo-<?php echo $d['employee_no']; ?>" value="<?php echo $d['employee_no']; ?>">
                                 <div class="form-group">
-                                    <input type="hidden" id="<?php echo $d['id']; ?>" value="<?php echo $d['id']; ?>">
-                                    <label for="name-<?php echo $d['id']; ?>">Location Name</label>
-                                    <input type="text" class="form-control" id="name-<?php echo $d['id']; ?>" value="<?php echo $d['name']; ?>" required>
+                                    <label for="pass-<?php echo $d['employee_no']; ?>">Password</label>
+                                    <input type="password" class="form-control" id="pass-<?php echo $d['employee_no']; ?>" value="<?php echo $d['password']; ?>" required>
                                 </div>
-                                <input type="submit" name="edit" id="edit" value="Update" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['id']; ?>)" data-dismiss="modal">
+                                <div class="custom-control form-group custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="isAdmin-<?php echo $d['employee_no']; ?>" <?php echo $d['check']; ?>>
+                                    <label class="custom-control-label" for="isAdmin-<?php echo $d['employee_no']; ?>">Admin</label>
+                                </div>
+                                <input type="submit" name="edit" id="edit-<?php echo $d['employee_no']; ?>" value="Update" class="btn btn-success btn-sm" onClick="updateData(<?php echo $d['employee_no']; ?>)" data-dismiss="modal">
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -41,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <button onClick="deleteData(<?php echo $d['id']; ?>)" type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
+                <button onClick="deleteData(<?php echo $d['employee_no']; ?>)" type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
             </td>
         </tr>
 
@@ -68,11 +72,12 @@
         <?php
     }elseif ($page=='delete'){
         $id = $_POST['id'];
-        $data = mysqli_query($koneksi,"CALL delete_location($id)");
+        $data = mysqli_query($koneksi,"CALL delete_login_data($id)");
     }elseif ($page=='edit'){
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        mysqli_query($koneksi,"CALL edit_location('$id', '$name')");
+        $id = $_POST['empNo'];
+        $pass = $_POST['pass'];
+        $isAdmin = $_POST['isAdmin'];
+        mysqli_query($koneksi,"CALL edit_login_data('$id', '$pass', $isAdmin)");
     }
 
 ?>

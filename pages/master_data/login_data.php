@@ -71,7 +71,7 @@
     function insertData() {
         let empNo = $('#empNo').val();
         let pass = $('#pass').val();
-        let isAdmin = $('#isAdmin').val() == "on"
+        let isAdmin = document.querySelector("#isAdmin").checked;
         $.ajax({
                 type: "POST",
                 url: '/pages/master_data/crud/login_data_script.php?p=add',
@@ -93,29 +93,30 @@
         });
     }
     function deleteData(str) {
-        // let id=str;
-        // $.ajax({
-        //     type: "POST",
-        //     url: '/pages/master_data/crud/login_data_script.php?p=delete',
-        //     data: "id="+id,
-        //     success: function () {
-        //         viewData();
-        //     }
-        // })
+        let id=str;
+        $.ajax({
+            type: "POST",
+            url: '/pages/master_data/crud/login_data_script.php?p=delete',
+            data: "id="+id,
+            success: function () {
+                viewData();
+            }
+        })
     }
     function updateData(str) {
-        // $('.modal-backdrop').remove();
-        // let id = str;
-        // let name = $('#name-'+id).val();
-        // console.log(name);
-        // $.ajax({
-        //     type: "POST",
-        //     url: "/pages/master_data/crud/login_data_script.php?p=edit",
-        //     data: "name="+name+"&id="+id,
-        //     success: function() {
-        //         viewData();
-        //     }
-        // })
+        $('.modal-backdrop').remove();
+        let empNo = str;
+        let pass = $('#pass-'+empNo).val();
+        let isAdmin = document.querySelector("#isAdmin-"+empNo).checked;
+
+        $.ajax({
+            type: "POST",
+            url: "/pages/master_data/crud/login_data_script.php?p=edit",
+            data: "empNo="+empNo+"&pass="+pass+"&isAdmin="+isAdmin,
+            success: function() {
+                viewData();
+            }
+        })
     }
     </script>
 </body>

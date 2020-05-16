@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $root =  $_SERVER['DOCUMENT_ROOT'];
+    if (isset($_SESSION['no'])) {
+        $userNo = $_SESSION['no'];
+        $type = $_SESSION['type'];
+    }else{
+        include $root.'/pages/login/login.php';
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -8,9 +19,8 @@
                 <div class="table-responsive border rounded p-2">
                 <table class="table table-borderless h5 font-weight-normal m-0">
                     <?php
-                        $root =  $_SERVER['DOCUMENT_ROOT'];
                         include $root.'/koneksi.php';    
-                        $data = mysqli_query($koneksi,"CALL get_employee('100010')");
+                        $data = mysqli_query($koneksi,"CALL get_employee('$userNo')");
                         $koneksi->next_result();
                         $d = mysqli_fetch_assoc($data)
                     ?>

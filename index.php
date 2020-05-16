@@ -65,6 +65,7 @@
               <a class="dropdown-item" href="#">Laporan Karyawan Bermasalah</a>
             </div>
           </li>
+          <button type="button" class="btn btn-danger btn-sm btn-nav" onClick="logout()">Log Out</button>
           <!-- Kalo gak work, hapus import bootstrap dari dynamic page nya -->
         </ul>
       </nav>
@@ -95,4 +96,16 @@
       </div>
     </footer>
   </body>
+  <script>
+    function logout() {
+      event.preventDefault();
+      $.ajax({
+              type: "GET",
+              url: '/pages/login/logout_script.php',
+              success: function(msg) {
+                location.reload();
+              }
+      })
+    }
+  </script>
 </html>

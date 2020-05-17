@@ -19,10 +19,10 @@
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand d-flex py-0" href="/">
           <i
-            class="fas fa-fingerprint align-self-center"
+            class="fas fa-fingerprint align-self-center d-none d-sm-block"
             style="font-size: 50px;"
           ></i>
-          <h1 class="align-self-center mx-3">Absensi Karyawan</h1>
+          <h1 class="align-self-center mx-3 d-none d-sm-block">Absensi Karyawan</h1>
         </a>
         <ul class="nav collapse-nav mr-auto">
           <li class="nav-item dropdown">
@@ -65,9 +65,9 @@
               <a class="dropdown-item" href="#">Laporan Karyawan Bermasalah</a>
             </div>
           </li>
-          <button type="button" class="btn btn-danger btn-sm btn-nav" onClick="logout()">Log Out</button>
           <!-- Kalo gak work, hapus import bootstrap dari dynamic page nya -->
         </ul>
+        <button type="button" class="btn btn-danger btn-sm my-auto" onClick="logout()">Log Out</button>
       </nav>
     </header>
     <main>

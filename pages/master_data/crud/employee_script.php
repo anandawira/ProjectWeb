@@ -126,6 +126,8 @@
         $pos = $_POST['pos'];
         $shift = $_POST['shift'];
         mysqli_query($koneksi,"CALL edit_employee('$id', '$name', '$dept', '$pos', '$shift')");
+    }elseif($page=='load'){
+        
     }
 
 ?>

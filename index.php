@@ -65,8 +65,8 @@
               Laporan
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <a class="dropdown-item" href="#">Laporan Karyawan Harian</a>
-              <a class="dropdown-item" href="#">Laporan Karyawan Mingguan</a>
+              <a class="dropdown-item" href="/?page=daily_report">Laporan Karyawan Harian</a>
+              <a class="dropdown-item" href="/?page=weekly_report">Laporan Karyawan Mingguan</a>
               <a class="dropdown-item" href="#">Laporan Karyawan Bulanan</a>
               <a class="dropdown-item" href="#">Laporan Karyawan Terlambat</a>
               <a class="dropdown-item" href="#">Laporan Karyawan Bermasalah</a>
@@ -74,7 +74,14 @@
           </li>
           <!-- Kalo gak work, hapus import bootstrap dari dynamic page nya -->
         </ul>
-        <button type="button" class="btn btn-danger btn-sm my-auto" onClick="logout()">Log Out</button>
+        <?php
+          if (isset($_SESSION['no'])) {
+            ?>
+            <button type="button" class="btn btn-danger btn-sm my-auto" onClick="logout()">Log Out</button>
+        <?php
+          }
+        ?>
+        
       </nav>
     </header>
     <main>
@@ -92,12 +99,14 @@
           include 'pages/master_data/login_data.php';
         }elseif($page=="weekly_report"){
           include 'pages/report/weekly_report.php';
+        }elseif($page=="daily_report"){
+          include 'pages/report/daily_report.php';
         }else{
           include 'pages/attendance/attendance.php';
         }
       ?>
     </main>
-    <div class="spacer" style="padding: 10px">
+    <div class="spacer" style="padding: 40px">
     </div>
     <footer class="fixed-bottom py-3 bg-dark text-white-50">
       <div class="container text-center">

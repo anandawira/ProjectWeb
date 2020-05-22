@@ -111,13 +111,15 @@
     $(document).ready(function() {
         $('table').DataTable(
             {
-                dom: 'Bfrtip',
+                dom: 'Blfrtip',
                 buttons:[
                             'pdf', 'print'
                         ],
-                "order": [[ 3, 'asc' ], [ 2, 'asc' ], [ 0, 'asc' ]]
+                "order": [[ 3, 'asc' ], [ 2, 'asc' ], [ 0, 'asc' ]],
+                lengthMenu: [[10,50,100,-1],[10,50,100,"ALL"]]
             }
         );
+        $('.dt-buttons').addClass("mb-3");
         $( ".datepicker" ).datepicker({
             dateFormat: "yy-mm-dd"
         });

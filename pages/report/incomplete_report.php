@@ -24,6 +24,7 @@
                         $enddate = $_GET['enddate'];
                         $data = mysqli_query($koneksi,"CALL get_attendance('$startdate', '$enddate')");
                         while($d = mysqli_fetch_array($data)){
+                            if ($d['in_time']=="No Record" or $d['out_time']=="No Record") {
                         ?>
                         <tr>
                             <td class="align-middle"><?php echo $d['employee_no']; ?></td>
@@ -45,6 +46,7 @@
                             ?>
                         </tr>
                         <?php
+                        }
                         }
                         ?>
                     </tbody>
@@ -88,7 +90,7 @@
         const start = $('#start-date').val();
         const end = $('#end-date').val();
         if (end>start) {
-            window.location = '?page=daily_report&startdate='+start+'&enddate='+end;
+            window.location = '?page=incomplete_report&startdate='+start+'&enddate='+end;
         }else{
             alert("end date must be after start date!")
         }

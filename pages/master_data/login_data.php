@@ -1,3 +1,13 @@
+<?php
+    $root =  $_SERVER['DOCUMENT_ROOT'];
+    if (isset($_SESSION['no'])) {
+        $userNo = $_SESSION['no'];
+        $type = $_SESSION['type'];
+    }else{
+        include $root.'/pages/login/login.php';
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <body onload="viewData()">

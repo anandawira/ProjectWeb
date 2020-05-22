@@ -96,8 +96,6 @@
           include 'pages/master_data/shift.php';
         }elseif($page=="login_data"){
           include 'pages/master_data/login_data.php';
-        }elseif($page=="weekly_report"){
-          include 'pages/report/weekly_report.php';
         }elseif($page=="daily_report"){
           include 'pages/report/daily_report.php';
         }elseif($page=="late_report"){

@@ -126,6 +126,8 @@
           include 'pages/report/late_report.php';
         }elseif($page=="incomplete_report"){
           include 'pages/report/incomplete_report.php';
+        }elseif($page=="dashboard"){
+          include 'pages/dashboard.php';
         }else{
           include 'pages/attendance/attendance.php';
         }

@@ -94,6 +94,11 @@
             </div>
         </div>
     </div>
+    <?php
+    if ($type=="Admin") {
+        include $root.'/pages/dashboard.php';
+    }
+    ?>
     <script>
     function insertData(int, str) {
         const fileExt = $('#uploadPhoto').val().split('.').pop();

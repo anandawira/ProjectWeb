@@ -34,7 +34,7 @@
                         $enddate = $_GET['enddate'];
                         $data = mysqli_query($koneksi,"CALL get_attendance('$startdate', '$enddate')");
                         while($d = mysqli_fetch_array($data)){
-                            if ($d['in_time']=="No Record" or $d['out_time']=="No Record") {
+                            if ($d['in_time']=="No Record" xor $d['out_time']=="No Record") {
                         ?>
                         <tr>
                             <td class="align-middle"><?php echo $d['employee_no']; ?></td>

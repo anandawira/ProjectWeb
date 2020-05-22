@@ -22,6 +22,7 @@
                             <th scope="col" class="align-middle">Attendance<br>Date</th>
                             <th scope="col" class="align-middle">In</th>
                             <th scope="col" class="align-middle">Out</th>
+                            <th scope="col" class="align-middle">Photo</th>
                             <th scope="col" class="align-middle">Attendance<br>Status</th>
                         </tr>
                         </tr>
@@ -43,6 +44,7 @@
                             <td class="align-middle"><?php echo $d['full_date']; ?></td>
                             <td class="align-middle"><?php echo $d['in_time']; ?></td>
                             <td class="align-middle"><?php echo $d['out_time']; ?></td>
+                            <td class="align-middle"><img class="img-fluid" src="uploads/<?php echo $d['file_name']; ?>" alt=""></td>
                             <?php
                                 if ($d['in_time']=="No Record" and $d['out_time']=="No Record") {
                                     echo '<td class="align-middle"><div class="bg-danger text-white rounded">Absent</div></td>';

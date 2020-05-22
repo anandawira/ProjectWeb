@@ -16,7 +16,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.2/b-flash-1.6.2/b-html5-1.6.2/b-print-1.6.2/datatables.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
   <?php
     session_start();
@@ -65,11 +66,9 @@
               Laporan
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <a class="dropdown-item" href="/?page=daily_report">Laporan Karyawan Harian</a>
-              <a class="dropdown-item" href="/?page=weekly_report">Laporan Karyawan Mingguan</a>
-              <a class="dropdown-item" href="#">Laporan Karyawan Bulanan</a>
-              <a class="dropdown-item" href="#">Laporan Karyawan Terlambat</a>
-              <a class="dropdown-item" href="#">Laporan Karyawan Bermasalah</a>
+              <a class="dropdown-item" href="/?page=daily_report">Laporan Absensi Karyawan</a>
+              <a class="dropdown-item" href="/?page=late_report">Laporan Karyawan Terlambat</a>
+              <a class="dropdown-item" href="/?page=incomplete_report">Laporan Karyawan Bermasalah</a>
             </div>
           </li>
           <!-- Kalo gak work, hapus import bootstrap dari dynamic page nya -->
@@ -101,6 +100,10 @@
           include 'pages/report/weekly_report.php';
         }elseif($page=="daily_report"){
           include 'pages/report/daily_report.php';
+        }elseif($page=="late_report"){
+          include 'pages/report/late_report.php';
+        }elseif($page=="incomplete_report"){
+          include 'pages/report/incomplete_report.php';
         }else{
           include 'pages/attendance/attendance.php';
         }

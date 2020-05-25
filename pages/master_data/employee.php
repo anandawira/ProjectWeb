@@ -3,6 +3,10 @@
     if (isset($_SESSION['no'])) {
         $userNo = $_SESSION['no'];
         $type = $_SESSION['type'];
+        if ($type!='Admin') {
+            include $root.'/pages/login/need_admin.php';
+            exit();
+        }
     }else{
         include $root.'/pages/login/login.php';
         exit();
@@ -17,24 +21,25 @@
     ?>
     <h2 class="text-center mt-4 mb-0">EMPLOYEE MASTER DATA</h2>
     <div class="container-sm mb-5">
-    <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm mb-2 float-right"><i class="fas fa-plus"></i>  Add</button>
-        <div class="table-responsive">
-            <table class="table table-hover mx-auto m-0  text-center">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col" class="align-middle">No</th>
-                    <th scope="col" class="align-middle">Employee No</th>
-                    <th scope="col" class="align-middle">Full Name</th>
-                    <th scope="col" class="align-middle">Department</th>
-                    <th scope="col" class="align-middle">Position</th>
-                    <th scope="col" class="align-middle">Shift</th>
-                    <th scope="col" class="align-middle">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        <button type="button" class="btn btn-success btn-sm" onclick="printTable()">Print</button>
+        <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm mb-2 float-right"><i class="fas fa-plus"></i>  Add</button>
+            <div class="table-responsive">
+                <table class="table table-hover mx-auto m-0  text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col" class="align-middle">No</th>
+                        <th scope="col" class="align-middle">Employee No</th>
+                        <th scope="col" class="align-middle">Full Name</th>
+                        <th scope="col" class="align-middle">Department</th>
+                        <th scope="col" class="align-middle">Position</th>
+                        <th scope="col" class="align-middle">Shift</th>
+                        <th scope="col" class="align-middle">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
     </div>
     <!-- modal -->
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
@@ -100,6 +105,9 @@
     </div>
     <!-- modal -->
     <script>
+    function printTable() {
+        window.print();
+    }
     function insertData() {
         let name = $('#name').val();
         let department = $('#department').val();
@@ -159,4 +167,11 @@
     // } );
     </script>
 </body>
+<style>
+@media print {
+    parent:not(table){
+        display: none;
+    }
+}
+</style>
 </html>

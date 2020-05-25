@@ -3,6 +3,10 @@
     if (isset($_SESSION['no'])) {
         $userNo = $_SESSION['no'];
         $type = $_SESSION['type'];
+        if ($type!='Admin') {
+            include $root.'/pages/login/need_admin.php';
+            exit();
+        }
     }else{
         include $root.'/pages/login/login.php';
         exit();

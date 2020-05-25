@@ -87,8 +87,8 @@
                         <textarea class="form-control" maxlength="200" id="notes"></textarea>
                     </div>
                     <div class="d-sm-flex flex-row justify-content-around">
-                        <button type="button" class="btn btn-primary btn-lg p-3" onclick="insertData(<?php echo $d['no']; ?>, 'in')"><i class="fas fa-sign-in-alt"></i>   Check In </button>
-                        <button type="button" class="btn btn-danger btn-lg p-3" onclick="insertData(<?php echo $d['no']; ?>, 'out')"><i class="fas fa-sign-out-alt"></i>   Check Out</button>
+                        <button type="button" class="btn btn-primary btn-lg p-3" onclick="insertData(<?php echo $d['no']; ?>, 'in')" <?php echo $d['in_status']; ?>><i class="fas fa-sign-in-alt"></i>   Check In </button>
+                        <button type="button" class="btn btn-danger btn-lg p-3" onclick="insertData(<?php echo $d['no']; ?>, 'out')" <?php echo $d['out_status']; ?>><i class="fas fa-sign-out-alt"></i>   Check Out</button>
                     </div>
                 </form>
             </div>

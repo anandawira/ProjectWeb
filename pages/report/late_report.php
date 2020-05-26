@@ -13,7 +13,7 @@
     }
 ?>
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-5">
         <?php
             if (isset($_GET['startdate']) && isset($_GET['enddate'])) {
                 ?>
@@ -71,7 +71,7 @@
             }else{
                 ?>
                 <div class="row justify-content-center">
-                    <form class="p-2 mb-3 col col-lg-8" onsubmit="saveDate()">
+                    <form class="p-2 mb-3 col col-lg-4" onsubmit="saveDate()">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">

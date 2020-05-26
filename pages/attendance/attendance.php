@@ -5,7 +5,7 @@
         $type = $_SESSION['type'];
     }else{
         include $root.'/pages/login/login.php';
-        exit();
+        return;
     }
 ?>
 <!DOCTYPE html>

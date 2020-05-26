@@ -139,7 +139,7 @@
     </main>
     <div class="spacer" style="padding: 40px">
     </div>
-    <footer class="fixed-bottom py-3 bg-dark text-white-50">
+    <footer class="fixed-bottom py-3 bg-dark text-white-50 d-print-none">
       <div class="container text-center">
           <small>Copyright &copy; Ananda Wiradharma</small>
       </div>

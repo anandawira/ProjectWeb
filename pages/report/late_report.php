@@ -119,7 +119,20 @@
             {
                 dom: 'Blfrtip',
                 buttons:[
-                            'pdf', 'print'
+                            {
+                                extend: 'pdf',
+                                text: 'PDF',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 7 ]
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                text: 'print',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 7 ]
+                                }
+                            }
                         ],
                 "order": [[ 3, 'asc' ], [ 2, 'asc' ], [ 0, 'asc' ]],
                 lengthMenu: [[10,50,100,-1],[10,50,100,"ALL"]]

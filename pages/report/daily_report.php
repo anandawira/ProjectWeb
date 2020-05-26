@@ -119,13 +119,16 @@
                 buttons:[
                             {
                                 extend: 'pdf',
-                                text: 'PDF'
+                                text: 'PDF',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 7 ]
+                                }
                             },
                             {
                                 extend: 'print',
                                 text: 'print',
                                 exportOptions: {
-                                    stripHtml: false
+                                    columns: [ 0, 1, 2, 3, 4, 5, 7 ]
                                 }
                             }
                         ],

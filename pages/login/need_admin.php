@@ -5,16 +5,3 @@
         <button type="button" onclick="logout()" class="btn btn-success mt-4">Log In with Admin Account</button>
     </div>
 </body>
-<script>
-    function logout() {
-      event.preventDefault();
-      $.ajax({
-              type: "GET",
-              url: '/pages/login/logout_script.php',
-              success: function(msg) {
-                location.reload();
-              }
-      })
-    }
-  </script>
-</html>

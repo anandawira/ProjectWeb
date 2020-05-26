@@ -17,7 +17,7 @@
             <td class="align-middle"><?php echo $d['position']; ?></td>
             <td class="align-middle"><?php echo $d['in_time']; ?> WIB - <?php echo $d['out_time']; ?> WIB</td>
             <td class="py-1 align-middle">
-                <button type="button" class="btn btn-secondary btn-sm mx-1" data-toggle="modal" data-target="#editModal-<?php echo $d['no']; ?>"><i class="fas fa-edit"></i>  Edit</button>
+                <button type="button" class="btn btn-secondary btn-sm mx-1 d-print-none" data-toggle="modal" data-target="#editModal-<?php echo $d['no']; ?>"><i class="fas fa-edit"></i>  Edit</button>
                 <div class="modal fade text-left" id="editModal-<?php echo $d['no']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                <button onClick="deleteData(<?php echo $d['no']; ?>)" type="button" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i>  Delete</button>
+                <button onClick="deleteData(<?php echo $d['no']; ?>)" type="button" class="btn btn-danger btn-sm mx-1 d-print-none"><i class="fas fa-trash-alt"></i>  Delete</button>
             </td>
         </tr>
 

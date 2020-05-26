@@ -5,11 +5,11 @@
         $type = $_SESSION['type'];
         if ($type!='Admin') {
             include $root.'/pages/login/need_admin.php';
-            exit();
+            return;
         }
     }else{
         include $root.'/pages/login/login.php';
-        exit();
+        return;
     }
 ?>
 <!DOCTYPE html>
@@ -18,8 +18,9 @@
     <?php
     ?>
     <h2 class="text-center mt-4 mb-0">SHIFT MASTER DATA</h2>
-    <div class="container-sm mb-5">
-    <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm mb-2 float-right"><i class="fas fa-plus"></i>  Add</button>
+    <div class="container-fluid mb-5">
+    <button type="button" class="btn btn-success btn-sm d-print-none" onclick="printTable()">Print</button>
+    <button type="button" data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm mb-2 float-right d-print-none"><i class="fas fa-plus"></i>  Add</button>
         <div class="table-responsive">
             <table class="table table-hover mx-auto m-0  text-center">
                 <thead class="thead-dark">
@@ -27,7 +28,7 @@
                     <th scope="col" class="align-middle">No</th>
                     <th scope="col" class="align-middle">In Time</th>
                     <th scope="col" class="align-middle">Out Time</th>
-                    <th scope="col" class="align-middle">Action</th>
+                    <th scope="col" class="align-middle d-print-none">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,6 +121,9 @@
     </div>
     <!-- modal -->
     <script>
+    function printTable() {
+        window.print();
+    }
     function insertData() {
         let inHour = $('#inHour').val();
         let outHour = $('#outHour').val();

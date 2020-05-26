@@ -5,11 +5,11 @@
         $type = $_SESSION['type'];
         if ($type!='Admin') {
             include $root.'/pages/login/need_admin.php';
-            exit();
+            return;
         }
     }else{
         include $root.'/pages/login/login.php';
-        exit();
+        return;
     }
 ?>
 <body>

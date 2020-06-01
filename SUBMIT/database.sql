@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2020 at 04:19 PM
+-- Generation Time: Jun 01, 2020 at 02:32 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -26,70 +26,70 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `add_department` (IN `name` VARCHAR(20))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `add_department` (IN `name` VARCHAR(20))  NO SQL
 INSERT INTO department VALUES('',name,true)$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `add_employee` (IN `name` VARCHAR(100), IN `deptId` SMALLINT, IN `pos` VARCHAR(50), IN `shiftId` SMALLINT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `add_employee` (IN `name` VARCHAR(100), IN `deptId` SMALLINT, IN `pos` VARCHAR(50), IN `shiftId` SMALLINT)  NO SQL
 INSERT INTO `employee` (`no`, `full_name`, `dept_id`, `position`, `shift_id`, `isActive`) 
 VALUES (NULL, name, deptId, pos, shiftId, '1')$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `add_location` (IN `name` VARCHAR(50))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `add_location` (IN `name` VARCHAR(50))  NO SQL
 INSERT INTO location VALUES('',name,true)$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `add_login_data` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30), IN `adminBool` BOOLEAN)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `add_login_data` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30), IN `adminBool` BOOLEAN)  NO SQL
 INSERT INTO `login` (`employee_no`, `password`, `isAdmin`) VALUES (empNo, pass, adminBool)$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `add_shift` (IN `inTime` TIME, IN `outTime` TIME)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `add_shift` (IN `inTime` TIME, IN `outTime` TIME)  NO SQL
 INSERT INTO `shift` (`id`, `in_time`, `out_time`) VALUES (NULL, inTime, outTime)$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `check_login` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `check_login` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30))  NO SQL
 SELECT login.employee_no, CASE WHEN login.isAdmin = 1 THEN "Admin" ELSE "Employee" END AS "type" FROM login WHERE login.employee_no = empNo AND BINARY login.password = pass$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `delete_department` (IN `deleteId` INT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `delete_department` (IN `deleteId` INT)  NO SQL
 UPDATE department
 SET isActive = false
 WHERE id=deleteId$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `delete_employee` (IN `deleteId` INT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `delete_employee` (IN `deleteId` INT)  NO SQL
 UPDATE employee
 SET isActive = false
 WHERE employee.no=deleteId$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `delete_location` (IN `deleteID` INT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `delete_location` (IN `deleteID` INT)  NO SQL
 UPDATE location
 SET isActive = false
 WHERE id=deleteId$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `delete_login_data` (IN `empNo` MEDIUMINT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `delete_login_data` (IN `empNo` MEDIUMINT)  NO SQL
 DELETE FROM `login` WHERE `login`.`employee_no` = empNo$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `delete_shift` (IN `deleteID` INT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `delete_shift` (IN `deleteID` INT)  NO SQL
 UPDATE shift
 SET isActive = false
 WHERE id=deleteId$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `edit_department` (IN `editID` SMALLINT, IN `editName` VARCHAR(20))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `edit_department` (IN `editID` SMALLINT, IN `editName` VARCHAR(20))  NO SQL
 UPDATE department
 SET name = editName
 WHERE id=editID$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `edit_employee` (IN `noEdit` INT, IN `name` VARCHAR(100), IN `deptId` INT, IN `pos` VARCHAR(50), IN `shiftId` INT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `edit_employee` (IN `noEdit` INT, IN `name` VARCHAR(100), IN `deptId` INT, IN `pos` VARCHAR(50), IN `shiftId` INT)  NO SQL
 UPDATE `employee` SET `full_name` = name, `dept_id` = deptID, `position` = pos, `shift_id` = shiftId WHERE `employee`.`no` = noEdit$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `edit_location` (IN `editID` INT, IN `editName` VARCHAR(50))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `edit_location` (IN `editID` INT, IN `editName` VARCHAR(50))  NO SQL
 UPDATE location
 SET name = editName
 WHERE id=editID$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `edit_login_data` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30), IN `admin` BOOLEAN)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `edit_login_data` (IN `empNo` MEDIUMINT, IN `pass` VARCHAR(30), IN `admin` BOOLEAN)  NO SQL
 UPDATE `login` SET `password` = pass, `isAdmin` = admin WHERE `login`.`employee_no` = empNo$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `edit_shift` (IN `editID` INT, IN `inTime` TIME, IN `outTime` TIME)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `edit_shift` (IN `editID` INT, IN `inTime` TIME, IN `outTime` TIME)  NO SQL
 UPDATE shift
 SET `in_time` = inTime, `out_time` = outTime
 WHERE id=editID$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_attendance` (IN `start_date` DATE, IN `end_date` DATE)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_attendance` (IN `start_date` DATE, IN `end_date` DATE)  NO SQL
 SELECT	
   	date_format(date_list.full_date, "%e %M %Y") as full_date,
     location.name as location_name,
@@ -133,17 +133,17 @@ ORDER BY
     employee.shift_id,
     employee_no$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_available_employee` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_available_employee` ()  NO SQL
 SELECT employee.no, employee.full_name
 FROM employee
 LEFT JOIN login
 ON employee.no = login.employee_no
 WHERE login.employee_no IS NULL AND employee.isActive=1$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_departments` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_departments` ()  NO SQL
 SELECT * FROM department WHERE isActive = true$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_employee` (IN `employeeNo` MEDIUMINT)  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_employee` (IN `employeeNo` MEDIUMINT)  NO SQL
 SELECT employee.full_name, employee.no, department.name AS department, employee.position, shift.in_time, shift.out_time, 
 	max(CASE 
     	WHEN attendance.type='in' 
@@ -164,7 +164,7 @@ LEFT JOIN attendance
 ON date(attendance.time) = date(CURRENT_TIMESTAMP()) AND employee.no = attendance.employee_id
 WHERE employee.no = employeeNo$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_employees` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_employees` ()  NO SQL
 SELECT employee.no , employee.full_name, employee.dept_id, department.name AS department_name, employee.position, employee.shift_id, shift.in_time, shift.out_time
 FROM employee
 LEFT JOIN department
@@ -173,19 +173,26 @@ LEFT JOIN shift
 ON employee.shift_id = shift.id
 WHERE employee.isActive = 1$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_locations` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_locations` ()  NO SQL
 SELECT * FROM location WHERE isActive = true$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_login_datas` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_login_datas` ()  NO SQL
 SELECT login.employee_no, employee.full_name, login.password, 
 CASE WHEN login.isAdmin = 1 THEN "Admin" ELSE "Employee" END AS "type", 
 CASE WHEN login.isAdmin = 1 THEN "Checked" ELSE "" END AS "check"
 FROM `login` LEFT JOIN employee ON login.employee_no = employee.no WHERE employee.isActive = 1$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `get_shifts` ()  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_personal_attendance` (IN `empNo` MEDIUMINT)  NO SQL
+SELECT attendance_view.date, time(attendance_view.time) as "time", upper(attendance_view.type) as type, location.name as location, attendance_view.file_name FROM `attendance_view`
+LEFT JOIN location
+ON attendance_view.location_id = location.id
+WHERE employee_id = empNo
+ORDER BY attendance_view.time DESC$$
+
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `get_shifts` ()  NO SQL
 SELECT * FROM shift WHERE isActive = true$$
 
-CREATE DEFINER=`id13807622_ananda`@`%` PROCEDURE `record_attendance` (IN `empID` INT, IN `locID` INT, IN `note` VARCHAR(200), IN `file` VARCHAR(50), IN `types` ENUM('in','out'))  NO SQL
+CREATE DEFINER=`id13807622_anand`@`%` PROCEDURE `record_attendance` (IN `empID` INT, IN `locID` INT, IN `note` VARCHAR(200), IN `file` VARCHAR(50), IN `types` ENUM('in','out'))  NO SQL
 INSERT INTO `attendance` (`id`, `time`, `employee_id`, `location_id`, `notes`, `file_name`, `type`) VALUES (NULL, current_timestamp(), empID, locID, note, file, types)$$
 
 DELIMITER ;
@@ -8004,7 +8011,9 @@ INSERT INTO `employee` (`no`, `full_name`, `dept_id`, `position`, `shift_id`, `i
 (100024, 'Ananda Wiradharma', 1, 'Operator', 1, 0),
 (100025, 'Ananda Wiradharma', 2, 'Engineer', 2, 0),
 (100026, 'Ananda Wiradharma', 3, 'Operator', 1, 0),
-(100027, 'testing 1', 4, 'Manager', 1, 1);
+(100027, 'testing 1', 4, 'Manager', 1, 1),
+(100028, 'Admin', 3, 'Engineer', 1, 1),
+(100029, 'User', 3, 'Engineer', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -8065,7 +8074,9 @@ INSERT INTO `login` (`employee_no`, `password`, `isAdmin`) VALUES
 (100017, 'admin', 0),
 (100018, 'admin', 1),
 (100019, 'admin', 0),
-(100020, 'admin', 0);
+(100020, 'admin', 0),
+(100028, 'admin', 1),
+(100029, 'user', 0);
 
 -- --------------------------------------------------------
 
@@ -8136,7 +8147,7 @@ INSERT INTO `type` (`type`) VALUES
 --
 DROP TABLE IF EXISTS `attendance_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER VIEW `attendance_view`  AS  select cast(convert_tz(`attendance`.`time`,'+00:00','+07:00') as date) AS `date`,convert_tz(`attendance`.`time`,'+00:00','+07:00') AS `time`,`attendance`.`type` AS `type`,`attendance`.`employee_id` AS `employee_id`,`attendance`.`location_id` AS `location_id`,`attendance`.`file_name` AS `file_name` from `attendance` group by cast(convert_tz(`attendance`.`time`,'+00:00','+07:00') as date),`attendance`.`type`,`attendance`.`employee_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_anand`@`%` SQL SECURITY DEFINER VIEW `attendance_view`  AS  select cast(convert_tz(`attendance`.`time`,'+00:00','+07:00') as date) AS `date`,convert_tz(`attendance`.`time`,'+00:00','+07:00') AS `time`,`attendance`.`type` AS `type`,`attendance`.`employee_id` AS `employee_id`,`attendance`.`location_id` AS `location_id`,`attendance`.`file_name` AS `file_name` from `attendance` group by cast(convert_tz(`attendance`.`time`,'+00:00','+07:00') as date),`attendance`.`type`,`attendance`.`employee_id` ;
 
 -- --------------------------------------------------------
 
@@ -8145,7 +8156,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER 
 --
 DROP TABLE IF EXISTS `department_count`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER VIEW `department_count`  AS  select count(`department`.`id`) AS `sum` from `department` where `department`.`isActive` = 1 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_anand`@`%` SQL SECURITY DEFINER VIEW `department_count`  AS  select count(`department`.`id`) AS `sum` from `department` where `department`.`isActive` = 1 ;
 
 -- --------------------------------------------------------
 
@@ -8154,7 +8165,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER 
 --
 DROP TABLE IF EXISTS `employee_count`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER VIEW `employee_count`  AS  select count(`employee`.`no`) AS `sum` from `employee` where `employee`.`isActive` = 1 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_anand`@`%` SQL SECURITY DEFINER VIEW `employee_count`  AS  select count(`employee`.`no`) AS `sum` from `employee` where `employee`.`isActive` = 1 ;
 
 -- --------------------------------------------------------
 
@@ -8163,7 +8174,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER 
 --
 DROP TABLE IF EXISTS `record_count`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER VIEW `record_count`  AS  select `date_list`.`full_date` AS `full_date`,count(`attendance_view`.`time`) AS `sum` from (`date_list` left join `attendance_view` on(`date_list`.`full_date` = `attendance_view`.`date`)) where `date_list`.`full_date` between cast(convert_tz(current_timestamp(),'+00:00','+07:00') as date) - interval 1 month and cast(convert_tz(current_timestamp(),'+00:00','+07:00') as date) and `date_list`.`isWorkingday` = 1 group by `date_list`.`full_date` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_anand`@`%` SQL SECURITY DEFINER VIEW `record_count`  AS  select `date_list`.`full_date` AS `full_date`,count(`attendance_view`.`time`) AS `sum` from (`date_list` left join `attendance_view` on(`date_list`.`full_date` = `attendance_view`.`date`)) where `date_list`.`full_date` between cast(convert_tz(current_timestamp(),'+00:00','+07:00') as date) - interval 1 month and cast(convert_tz(current_timestamp(),'+00:00','+07:00') as date) and `date_list`.`isWorkingday` = 1 group by `date_list`.`full_date` ;
 
 -- --------------------------------------------------------
 
@@ -8172,7 +8183,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER 
 --
 DROP TABLE IF EXISTS `shift_count`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_ananda`@`%` SQL SECURITY DEFINER VIEW `shift_count`  AS  select count(`shift`.`id`) AS `sum` from `shift` where `shift`.`isActive` = 1 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id13807622_anand`@`%` SQL SECURITY DEFINER VIEW `shift_count`  AS  select count(`shift`.`id`) AS `sum` from `shift` where `shift`.`isActive` = 1 ;
 
 --
 -- Indexes for dumped tables
@@ -8245,7 +8256,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `no` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100028;
+  MODIFY `no` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100030;
 
 --
 -- AUTO_INCREMENT for table `location`

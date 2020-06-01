@@ -1,0 +1,9 @@
+absensikaryawan.000webhostapp.com
+
+admin
+empNo	: 100028
+pass	: admin
+
+user
+empNo	: 100029
+pass	: user
